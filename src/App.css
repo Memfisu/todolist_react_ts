@@ -37,7 +37,7 @@ body {
 }
 
 .header button {
-  width: 70px;
+  width: 80px;
   height: 87px;
   border: none;
   border-bottom-right-radius: 8px;
@@ -48,7 +48,7 @@ body {
   color: white;
 }
 
-.todoList {
+.participantsList {
   flex: 70%;
   width: 100%;
   display: flex;
@@ -57,7 +57,7 @@ body {
   flex-direction: column;
 }
 
-.task {
+.participant {
   width: 500px;
   height: 50px;
   display: flex;
@@ -65,7 +65,7 @@ body {
   margin: 15px;
 }
 
-.task .content {
+.participant .content {
   flex: 80%;
   height: 100%;
   display: flex;
@@ -73,7 +73,7 @@ body {
   align-items: center;
 }
 
-.task .content span {
+.participant .content span {
   display: grid;
   place-items: center;
   border: 1px solid white;
@@ -84,7 +84,7 @@ body {
   background-color: burlywood;
 }
 
-.task button {
+.participant button {
   flex: 20%;
   height: 100%;
   border: none;

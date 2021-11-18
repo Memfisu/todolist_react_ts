@@ -1,33 +1,46 @@
-import React, { ChangeEvent } from 'react';
-import '../App.css';
+import React, {ChangeEvent, useState} from 'react';
+import { useDispatch } from 'react-redux';
+import { setData } from '../reducers/dataSetter';
 
-interface Props {
-    task: string;
-    deadline: number;
-    handleChange(event: ChangeEvent<HTMLInputElement>): void;
-    addTask(): void;
-}
+const Header = () => {
+    const [participant, setParticipant] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
 
-const Header = ({ task, deadline, handleChange, addTask }: Props) => {
+    const dispatch = useDispatch();
+
+    const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
+        if (event.target.name === 'participant') {
+            setParticipant(event.target.value);
+        } else {
+            setEmail(event.target.value);
+        }
+    };
+
+    const addParticipant = (): void => {
+        dispatch(setData({ participant, email }));
+        setParticipant('');
+        setEmail('');
+    };
+
     return (
         <div className="header">
             <div className="inputContainer">
                 <input
                     type="text"
-                    name="task"
-                    placeholder="Write something"
-                    value={task}
+                    name="participant"
+                    placeholder="Name"
+                    value={participant}
                     onChange={handleChange}
                 />
                 <input
-                    type="number"
-                    name="deadline"
-                    placeholder="Deadline"
-                    value={deadline}
+                    type="email"
+                    name="email"
+                    placeholder="E-mail"
+                    value={email}
                     onChange={handleChange}
                 />
             </div>
-            <button onClick={addTask}>Add task</button>
+            <button onClick={addParticipant}>Add participant</button>
         </div>
     );
 }
